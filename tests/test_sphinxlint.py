@@ -32,7 +32,7 @@ def test_sphinxlint_shall_trigger_false_positive(file, capsys):
     assert err == ""
     assert error_count == 0
     try:
-        main(["sphinxlint.py", "-f", str(file)])
+        main(["sphinxlint.py", "--enable", "all", str(file)])
     except SystemExit as err:
         error_count = err.code
     out, err = capsys.readouterr()
@@ -44,7 +44,7 @@ def test_sphinxlint_shall_trigger_false_positive(file, capsys):
 @pytest.mark.parametrize("file", [str(f) for f in (FIXTURE_DIR / "xfail").iterdir()])
 def test_sphinxlint_shall_not_pass(file, capsys):
     try:
-        main(["sphinxlint.py", "--severity=0", str(file)])
+        main(["sphinxlint.py", "--enable", "all", str(file)])
     except SystemExit as err:
         error_count = err.code
     out, err = capsys.readouterr()
