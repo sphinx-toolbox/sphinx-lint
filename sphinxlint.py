@@ -303,8 +303,8 @@ def check_whitespace(file, lines):
     for lno, line in enumerate(lines):
         if "\r" in line:
             yield lno + 1, "\\r in line"
-        if "\t" in line:
-            yield lno + 1, "OMG TABS!!!1"
+        # if "\t" in line:
+        #     yield lno + 1, "OMG TABS!!!1"
         if line.rstrip("\n").rstrip(" \t") != line.rstrip("\n"):
             yield lno + 1, "trailing whitespace"
     if line is not None:
